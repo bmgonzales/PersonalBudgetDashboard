@@ -1,0 +1,332 @@
+<html>
+  <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart', 'controls']});
+      google.charts.setOnLoadCallback(getDataSet1);
+      google.charts.setOnLoadCallback(getDataSet2);
+      google.charts.setOnLoadCallback(getDataSet3);
+      google.charts.setOnLoadCallback(getDataSet4);
+      google.charts.setOnLoadCallback(getDataSet5);
+      
+      function getDataSet1() {
+        var queryString1 = encodeURIComponent('SELECT A, B, C, D, E');
+        var query1 = new google.visualization.Query(
+          'https://docs.google.com/spreadsheets/d/sheetid/gviz/tq?sheet=NetIncomeByMonth&headers=1&tq=' + queryString1);
+        query1.send(drawDashboard1);
+      }
+      
+      function drawDashboard1(response) {
+         var dataSet1 = response.getDataTable();
+         var dashboard1 = new google.visualization.Dashboard(
+            document.getElementById('netIncomeDashboard'));
+
+        // filter
+        var netIncomeFilter = new google.visualization.ControlWrapper({
+          'controlType': 'CategoryFilter',
+          'containerId': 'netIncomeFilter1',
+          'state' : { selectedValues: ['2018'] },
+          'options': {
+            'filterColumnLabel': 'Year',
+            'ui': {
+              'allowMultiple': false,
+              'selectedValuesLayout': 'below'
+            }
+          }
+        });
+        
+        // chart
+        var netIncomeChart = new google.visualization.ChartWrapper({
+          'chartType': 'Table',
+          'containerId': 'netIncomeChart',
+          'options': {
+            'width': 800,
+            //'height': 350,
+           }
+        });
+        
+        // sum Total Income
+        google.visualization.events.addListener(netIncomeChart, 'ready', function () {
+        var group = google.visualization.data.group(netIncomeChart.getDataTable(), [{
+            column: 0,
+            type: 'number',
+            modifier: function () {
+                return 1;
+            }
+        }], [{
+            column: 2,
+            label: 'Total Income',
+            type: 'number',
+            aggregation: google.visualization.data.sum
+        }]);       
+        var incTotal = group.getValue(0, 1);
+        var value1 = incTotal.toLocaleString(undefined, { minimumFractionDigits: 2 });
+        document.getElementById('incTotal').innerHTML = value1;     
+        });
+
+        // sum Total Expense
+        google.visualization.events.addListener(netIncomeChart, 'ready', function () {
+        var group = google.visualization.data.group(netIncomeChart.getDataTable(), [{
+            column: 0,
+            type: 'number',
+            modifier: function () {
+                return 1;
+            }
+        }], [{
+            column: 3,
+            label: 'Total Expenses',
+            type: 'number',
+            aggregation: google.visualization.data.sum
+        }]);       
+        var expTotal = group.getValue(0, 1); 
+        var value2 = expTotal.toLocaleString(undefined, { minimumFractionDigits: 2 });
+        document.getElementById('expTotal').innerHTML = value2;     
+        });
+
+        // sum Net Total
+        google.visualization.events.addListener(netIncomeChart, 'ready', function () {
+        var group = google.visualization.data.group(netIncomeChart.getDataTable(), [{
+            column: 0,
+            type: 'number',
+            modifier: function () {
+                return 1;
+            }
+        }], [{
+            column: 4,
+            label: 'Net Total',
+            type: 'number',
+            aggregation: google.visualization.data.sum
+        }]);       
+        var netTotal = group.getValue(0, 1);
+        var value3 = netTotal.toLocaleString(undefined, { minimumFractionDigits: 2 });
+        document.getElementById('netTotal').innerHTML = value3;     
+        });
+
+        dashboard1.bind(netIncomeFilter, netIncomeChart);
+        dashboard1.draw(dataSet1);
+
+      }
+
+      function getDataSet2() {
+        var queryString2 = encodeURIComponent('SELECT A, C, D, E');
+        var query2 = new google.visualization.Query(
+          'https://docs.google.com/spreadsheets/d/sheetid/gviz/tq?sheet=IncomeByEarner&headers=1&tq=' + queryString2);
+        query2.send(drawDashboard2);
+      }
+
+      function drawDashboard2(response) {
+         var dataSet2 = response.getDataTable();
+         var dashboard2 = new google.visualization.Dashboard(
+            document.getElementById('incEarnerDashboard'));
+
+        // filter
+        var incEarnerFilter = new google.visualization.ControlWrapper({
+          'controlType': 'CategoryFilter',
+          'containerId': 'incEarnerFilter',
+          'state' : { selectedValues: ['2018'] },
+          'options': {
+            'filterColumnLabel': 'Year',
+            'ui': {
+              'allowMultiple': false,
+              'selectedValuesLayout': 'below'
+            }
+          }
+        });
+
+        // chart
+        var incEarnerChart = new google.visualization.ChartWrapper({
+          'chartType': 'BarChart',
+          'containerId': 'incEarnerChart',
+          'options': {
+            'width': 700,
+            'height': 700,
+            'legend': 'right',
+            'isStacked' : true, 
+            hAxis: { title: 'Total Income',},
+            vAxis: { title: 'JAN --> DEC',
+          },
+         // 'view': {columns: [1, 2, 3, 4}
+          }
+       });
+
+        dashboard2.bind(incEarnerFilter, incEarnerChart);
+        dashboard2.draw(dataSet2);
+      }
+      
+      function getDataSet3() {
+        var queryString3 = encodeURIComponent('SELECT A, C, D, E, F');
+        var query3 = new google.visualization.Query(
+          'https://docs.google.com/spreadsheets/d/sheetid/gviz/tq?sheet=IncomeByCategory&headers=1&tq=' + queryString3);
+        query3.send(drawDashboard3);
+      }
+
+      function drawDashboard3(response) {
+         var dataSet3 = response.getDataTable();
+         var dashboard3 = new google.visualization.Dashboard(
+            document.getElementById('incCategoryDashboard'));
+
+        // filter
+        var incCategoryFilter = new google.visualization.ControlWrapper({
+          'controlType': 'CategoryFilter',
+          'containerId': 'incCategoryFilter',
+          'state' : { selectedValues: ['2018'] },
+          'options': {
+            'filterColumnLabel': 'Year',
+            'ui': {
+              'allowMultiple': false,
+              'selectedValuesLayout': 'below'
+            }
+          }
+        });
+
+        // chart
+        var incCategoryChart = new google.visualization.ChartWrapper({
+          'chartType': 'BarChart',
+          'containerId': 'incCategoryChart',
+          'options': {
+            'width': 700,
+            'height': 700,
+            'legend': 'right',
+            'isStacked' : true, 
+            hAxis: { title: 'Total Income',},
+            vAxis: { title: 'JAN --> DEC'}
+           }
+        });
+
+        dashboard3.bind(incCategoryFilter, incCategoryChart);
+        dashboard3.draw(dataSet3);
+      }
+      
+      function getDataSet4() {
+        var queryString4 = encodeURIComponent('SELECT A, C, D, E, F, G, H, I, J, K');
+        var query4 = new google.visualization.Query(
+          'https://docs.google.com/spreadsheets/d/sheetid/gviz/tq?sheet=ExpensesByCategory&headers=1&tq=' + queryString4);
+        query4.send(drawDashboard4);
+      }
+
+      function drawDashboard4(response) {
+         var dataSet4 = response.getDataTable();
+         var dashboard4 = new google.visualization.Dashboard(
+            document.getElementById('ExpCategoryDashboard'));
+
+        // filter
+        var expCategoryFilter = new google.visualization.ControlWrapper({
+          'controlType': 'CategoryFilter',
+          'containerId': 'expCategoryFilter',
+          'state' : { selectedValues: ['2018'] },
+          'options': {
+            'filterColumnLabel': 'Year',
+            'ui': {
+              'allowMultiple': false,
+              'selectedValuesLayout': 'below'
+            }
+          }
+        });
+
+        // chart
+        var expCategoryChart = new google.visualization.ChartWrapper({
+          'chartType': 'BarChart',
+          'containerId': 'expCategoryChart',
+          'options': {
+            'width': 700,
+            'height': 700,
+            'legend': 'right',
+            'isStacked' : true, 
+            hAxis: { title: 'Total Expenses',},
+            vAxis: { title: 'JAN --> DEC'}
+           },
+        });
+
+        dashboard4.bind(expCategoryFilter, expCategoryChart);
+        dashboard4.draw(dataSet4);
+      }
+      
+      function getDataSet5() {
+        var queryString5 = encodeURIComponent('SELECT A, B, C');
+        var query5 = new google.visualization.Query(
+          'https://docs.google.com/spreadsheets/d/sheetid/gviz/tq?sheet=CashCreditPivot&headers=1&tq=' + queryString5);
+        query5.send(drawDashboard5);
+      }
+
+      function drawDashboard5(response) {
+         var dataSet5 = response.getDataTable();
+         var dashboard5 = new google.visualization.Dashboard(
+            document.getElementById('ExpCashCreditDashboard'));
+
+        // filter
+        var expCashCreditFilter = new google.visualization.ControlWrapper({
+          'controlType': 'CategoryFilter',
+          'containerId': 'expCashCreditFilter',
+          'state' : { selectedValues: ['2018', '2017', '2016', '2015'] },
+          'options': {
+            'filterColumnLabel': 'Year',
+            'ui': {
+              'selectedValuesLayout': 'below'
+            }
+          }
+        });
+        
+        // chart
+        var expCashCreditChart = new google.visualization.ChartWrapper({
+          'chartType': 'ColumnChart',
+          'containerId': 'expCashCreditChart',
+          'options': {
+            'width': 700,
+            'height': 700,
+            'legend': 'right',
+            hAxis: { title: 'Year',},
+            vAxis: { title: 'Total Expenses'}
+           }
+        });
+
+        dashboard5.bind(expCashCreditFilter, expCashCreditChart);
+        dashboard5.draw(dataSet5);
+      }
+    </script>
+  </head>
+
+<body>
+<div class="container-fluid">
+<center><h1>Budget Dashboard</h1></center>
+<div id="netIncomeDashboard" class="row" style="padding-top: 30px; padding-bottom: 30px;">
+    <div id="netIncomeFilter1" class="col-md-4" style="padding-left: 250px;"></div>
+    <div id="netIncomeChart" class="col-md-8" style="margin:auto;"></div>
+    <div id="space" class="col-md-4"></div>
+    <div id="totals_row" class="col-md-8" style="margin:auto;"><table style="width:800px;"><tr><td style="width:82px;"></td><td style="width:133px;"></td><td style="font-weight:bold;width:192px;" align="right">$<span id="incTotal"></span> </td><td style="font-weight:bold;width:224px;" align="right">$<span id="expTotal"></span></td><td style="font-weight:bold;" align="right">$<span id="netTotal"></span></td></tr></table></div>
+
+</div>   
+<hr>
+<div class="row" style="padding-top: 25px;">
+<div id="incEarnerDashboard" class="col-md-6">
+  <center><h2>Income by Earner</h2></center>
+  <div class="col-md-12"><center id="incEarnerFilter"></center></div> 
+ <div id="incEarnerChart" class="col-md-12"></div>
+
+</div>       
+<div id="incCategoryDashboard" class="col-md-6">
+  <center><h2>Income by Category</h2></center>
+    <div class="col-md-12"><center id="incCategoryFilter"></center></div>
+  <div id="incCategoryChart" class="col-md-12"></div>
+
+</div>       
+</div>    
+<div class="row" style="padding-top: 25px;">
+<div id="expCategoryDashboard" class="col-md-6" >
+  <center><h2>Expenses by Category</h2></center>
+      <div class="col-md-12"><center id="expCategoryFilter"></center></div>
+  <div id="expCategoryChart" class="col-md-12"></div>
+
+</div>       
+<div id="expCashCreditDashboard" class="col-md-6">
+  <center><h2>Expenses by Cash/Credit</h2></center>
+      <div id="expCashCreditFilter" class="col-md-12" style="display:none;"></div>
+  <div id="expCashCreditChart" class="col-md-12"></div>
+</div>       
+</div>        
+</div>
+
+  </body>
+</html>
