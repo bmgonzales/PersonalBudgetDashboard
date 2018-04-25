@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Budget Tracker</title>
+    <base target="_top">
+  </head>
+  <body>
+
+<div id="outer">
+  <div id="formcontainer">
+
+    <form id="budget_upload"> 
+    <h1>Monthly Budget Input Form</h1>
+    
+    <table width="700px">
+    <tr><td width="250px" align="right"> <label for="year">Year:</label></td><td>    <select id="year" name="year" style="width: 145px;">
+    <option value="2021">2021</option>
+    <option value="2020">2020</option>
+    <option value="2019">2019</option>
+    <option value="2018" selected>2018</option>
+    <option value="2017">2017</option>
+    <option value="2016">2016</option>
+    <option value="2015">2015</option>
+    <option value="2014">2014</option>
+    </select></td></tr>
+    <tr><td align="right"><label for="month">Month:</label></td><td><select id="month" name="month" style="width: 145px;">
+    <option value="January">January</option>
+    <option value="February">February</option>
+    <option value="March">March</option>
+    <option value="April">April</option>
+    <option value="May">May</option>
+    <option value="June">June</option>
+    <option value="July">July</option>
+    <option value="August">August</option>
+    <option value="September">September</option>
+    <option value="October">October</option>
+    <option value="November">November</option>
+    <option value="December">December</option>
+    </select></td></tr>
+    </table>
+   
+   
+
+<h2>Income:</h2>
+<table width="700px">
+<tr><td width="250px" align="right"><label for="bpay">Paycheck</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="bpay" name="bpay"/></td></tr>
+<tr><td align="right"><label for="apay1">Paycheck</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="apay1" name="apay1"/></td></tr>
+<tr><td align="right"><label for="apay2">Paycheck</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="apay2" name="apay2" /></td></tr>
+<tr><td align="right"><label for="atips">Cash Tips</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="atips" name="atips" /></td></tr>
+<tr><td align="right"><label for="aunion">Other Paychecks</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="aoth" name="aunion" /></td></tr>
+<tr><td align="right"><label for="acom">Comedy Income</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="acom" name="acom" /></td></tr>
+<tr><td align="right"><label for="inc_other">Other Income</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="inc_other" name="inc_other" /></td></tr>
+</table>    
+        
+        
+    
+<h2>Expenses:</h2>
+
+<table width="700px">
+<thead><td width="250px"></td><td><span class="heading">Cash</span></td><td><span class="heading">Credit</span></td></thead>
+<tr><td align="right"><strong>Home</strong></td><td></td><td></td></tr>
+<tr><td align="right"><label for="mortgage">Mortgage</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="mortgage_ca" name="mortgage_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="mortgage_cr" name="mortgage_cr" /></td></tr>
+<tr><td align="right"><label for="home_ins">Home Insurance</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="home_ins_ca" name="home_ins_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="home_ins_cr" name="home_ins_cr" /></td></tr>
+<tr><td align="right"><label for="lawn">Lawn Care</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="lawn_ca" name="lawn_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="lawn_cr" name="lawn_cr" /></td></tr>
+<tr><td align="right"><label for="home_other">Other</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="home_other_ca" name="home_other_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="home_other_cr" name="home_other_cr" /></td></tr>
+<tr><td align="right"><strong>Debts</strong></td><td></td><td></td></tr>
+<tr><td align="right"><label for="student">Student Loans</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="student_ca" name="student_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="student_cr" name="student_cr" /></td></tr>
+<tr><td align="right"><label for="r2go">Credit Card</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="r2go_ca" name="r2go_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="r2go_cr" name="r2go_cr" /></td></tr>
+<tr><td align="right"><label for="debt_other">Other</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="debt_other_ca" name="debt_other_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="debt_other_cr" name="debt_other_cr" /></td></tr>
+<tr><td align="right"><strong>Utilities</strong></td><td></td><td></td></tr>
+<tr><td align="right"><label for="electricity">Electricity (CPS)</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="electricity_ca" name="electricity_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="electricity_cr" name="electricity_cr" /></td></tr>
+<tr><td align="right"><label for="water">Water</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="water_ca" name="water_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="water_cr" name="water_cr" /></td></tr>
+<tr><td align="right"><label for="garbage">Garbage</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="garbage_ca" name="garbage_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="garbage_cr" name="garbage_cr" /></td></tr>
+<tr><td align="right"><label for="internet">Internet</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="internet_ca" name="internet_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="internet_cr" name="internet_cr" /></td></tr>
+<tr><td align="right"><label for="cell">Cell Phones</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="cell_ca" name="cell_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="cell_cr" name="cell_cr" /></td></tr>
+<tr><td align="right"><strong>Transportation</strong></td><td></td><td></td></tr>
+<tr><td align="right"><label for="car_ins">Car Insurance</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="car_ins_ca" name="car_ins_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="car_ins_cr" name="car_ins_cr" /></td></tr>
+<tr><td align="right"><label for="gas">Gas</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="gas_ca" name="gas_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="gas_cr" name="gas_cr" /></td></tr>
+<tr><td align="right"><label for="car_main">Car Maintenance</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="car_main_ca" name="car_main_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="car_main_cr" name="car_main_cr" /></td></tr>
+<tr><td align="right"><label for="uber">Uber</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="uber_ca" name="uber_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="uber_cr" name="uber_cr" /></td></tr>
+<tr><td align="right"><label for="bus">Bus Fare</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="bus_ca" name="bus_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="bus_cr" name="bus_cr" /></td></tr>
+<tr><td align="right"><strong>Food</strong></td><td></td><td></td></tr>
+<tr><td align="right"><label for="groceries">Groceries</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="groceries_ca" name="groceries_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="groceries_cr" name="groceries_cr" /></td></tr>
+<tr><td align="right"><label for="restaurant">Eating Out</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="restaurant_ca" name="restraurant_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="restaurant_cr" name="restaurant_cr" /></td></tr>
+<tr><td align="right"><strong>Medical</strong></td><td></td><td></td></tr>
+<tr><td align="right"><label for="meds">Medication</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="meds_ca" name="meds_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="meds_cr" name="meds_cr" /></td></tr>
+<tr><td align="right"><label for="doct">Doctor Visits</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="doct_ca" name="doct_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="doct_cr" name="doct_cr" /></td></tr>
+<tr><td align="right"><label for="dent">Dentist Visits</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="dent_ca" name="dent_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="dent_cr" name="dent_cr" /></td></tr>
+<tr><td align="right"><label for="eyes">Eye Care</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="eyes_ca" name="eyes_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="eyes_cr" name="eyes_cr" /></td></tr>
+<tr><td align="right"><label for="med_other">Other</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="med_other_ca" name="med_other_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="med_other_cr" name="med_other_cr" /></td></tr>
+<tr><td align="right"><strong>Entertainment</strong></td><td></td><td></td></tr>
+<tr><td align="right"><label for="netflix">Netflix</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="netflix_ca" name="netflix_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="netflix_cr" name="netflix_cr" /></td></tr>
+<tr><td align="right"><label for="sling">Sling</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="sling_ca" name="sling_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="sling_cr" name="sling_cr" /></td></tr>
+<tr><td align="right"><label for="amazon">Amazon Prime</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="amazon_ca" name="amazon_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="amazon_cr" name="amazon_cr" /></td></tr>
+<tr><td align="right"><label for="ent_other">Other</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="ent_other_ca" name="ent_other_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="ent_other_cr" name="ent_other_cr" /></td></tr>
+<tr><td align="right"><strong>Clothes</strong></td><td></td><td></td></tr>
+<tr><td align="right"><label for="clothes">Clothes/Shoes</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="clothes_ca" name="clothes_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="clothes_cr" name="clothes_cr" /></td></tr>
+<tr><td align="right"><strong>Misc</strong></td><td></td><td></td></tr>
+<tr><td align="right"><label for="hair">Haircuts</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="hair_ca" name="hair_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="hair_cr" name="hair_cr" /></td></tr>
+<tr><td align="right"><label for="misc_other">Other</label></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="misc_other_ca" name="misc_other_ca" /></td><td><input type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" id="misc_other_cr" name="misc_other_cr" /></td></tr>
+<tr><td align="right" colspan=3><input id="submit" type="button" value="Submit" onclick="uploadData()"></td></tr>
+</table>
+
+    </form>
+  </div>
+  
+  <div id="success">
+  </div>
+  
+  </div><!-- End Outer Div -->
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+<script>
+
+function uploadData() {
+        var year = document.getElementById('year').value;
+        var month = document.getElementById('month').value;
+        var bpay = document.getElementById('bpay').value;
+        var apay1 = document.getElementById('apay1').value;
+        var apay2 = document.getElementById('apay2').value;
+        var atips = document.getElementById('atips').value;
+        var aoth = document.getElementById('aoth').value;
+        var acom = document.getElementById('acom').value;
+        var inc_other = document.getElementById('inc_other').value;
+        
+        var mortgage_ca = document.getElementById('mortgage_ca').value;
+        var mortgage_cr = document.getElementById('mortgage_cr').value;
+        var lawn_ca = document.getElementById('lawn_ca').value;
+        var lawn_cr = document.getElementById('lawn_cr').value;
+        var student_ca = document.getElementById('student_ca').value;
+        var student_cr = document.getElementById('student_cr').value;
+        var r2go_ca = document.getElementById('r2go_ca').value;
+        var r2go_cr = document.getElementById('r2go_cr').value;
+        var internet_ca = document.getElementById('internet_ca').value;
+        var internet_cr = document.getElementById('internet_cr').value;
+        var cell_ca = document.getElementById('cell_ca').value;
+        var cell_cr = document.getElementById('cell_cr').value;
+        var netflix_ca = document.getElementById('netflix_ca').value;
+        var netflix_cr = document.getElementById('netflix_cr').value;
+        var sling_ca = document.getElementById('sling_ca').value;
+        var sling_cr = document.getElementById('sling_cr').value;
+        var amazon_ca = document.getElementById('amazon_ca').value;
+        var amazon_cr = document.getElementById('amazon_cr').value;
+        var home_ins_ca = document.getElementById('home_ins_ca').value;
+        var home_ins_cr = document.getElementById('home_ins_cr').value;
+        var home_other_ca = document.getElementById('home_other_ca').value;
+        var home_other_cr = document.getElementById('home_other_cr').value;
+        var debt_other_ca = document.getElementById('debt_other_ca').value;
+        var debt_other_cr = document.getElementById('debt_other_cr').value;
+        var electricity_ca = document.getElementById('electricity_ca').value;
+        var electricity_cr = document.getElementById('electricity_cr').value;
+        var water_ca = document.getElementById('water_ca').value;
+        var water_cr = document.getElementById('water_cr').value;
+        var garbage_ca = document.getElementById('garbage_ca').value;
+        var garbage_cr = document.getElementById('garbage_cr').value;
+        var car_ins_ca = document.getElementById('car_ins_ca').value;
+        var car_ins_cr = document.getElementById('car_ins_cr').value;
+        var gas_ca = document.getElementById('gas_ca').value;
+        var gas_cr = document.getElementById('gas_cr').value;
+        var car_main_ca = document.getElementById('car_main_ca').value;
+        var car_main_cr = document.getElementById('car_main_cr').value;
+        var uber_ca = document.getElementById('uber_ca').value;
+        var uber_cr = document.getElementById('uber_cr').value;
+        var bus_ca = document.getElementById('bus_ca').value;
+        var bus_cr = document.getElementById('bus_cr').value;
+        var groceries_ca = document.getElementById('groceries_ca').value;
+        var groceries_cr = document.getElementById('groceries_cr').value;
+        var restaurant_ca = document.getElementById('restaurant_ca').value;
+        var restaurant_cr = document.getElementById('restaurant_cr').value;
+        var meds_ca = document.getElementById('meds_ca').value;
+        var meds_cr = document.getElementById('meds_cr').value;
+        var doct_ca = document.getElementById('doct_ca').value;
+        var doct_cr = document.getElementById('doct_cr').value;
+        var dent_ca = document.getElementById('dent_ca').value;
+        var dent_cr = document.getElementById('dent_cr').value;
+        var eyes_ca = document.getElementById('eyes_ca').value;
+        var eyes_cr = document.getElementById('eyes_cr').value;
+        var med_other_ca = document.getElementById('med_other_ca').value;
+        var med_other_cr = document.getElementById('med_other_cr').value;
+        var ent_other_ca = document.getElementById('ent_other_ca').value;
+        var ent_other_cr = document.getElementById('ent_other_cr').value;
+        var clothes_ca = document.getElementById('clothes_ca').value;
+        var clothes_cr = document.getElementById('clothes_cr').value;
+        var hair_ca = document.getElementById('hair_ca').value;
+        var hair_cr = document.getElementById('hair_cr').value;
+        var misc_other_ca = document.getElementById('misc_other_ca').value;
+        var misc_other_cr = document.getElementById('misc_other_cr').value;
+        google.script.run.uploadDataToDrive(year, month, bpay, apay1, apay2, atips, aoth, acom, inc_other, mortgage_ca, mortgage_cr, lawn_ca, lawn_cr, student_ca, student_cr, r2go_ca, r2go_cr, internet_ca, internet_cr, cell_ca, cell_cr, netflix_ca, netflix_cr, sling_ca, sling_cr, amazon_ca, amazon_cr, home_ins_ca, home_ins_cr, home_other_ca, home_other_cr, debt_other_ca, debt_other_cr, electricity_ca, electricity_cr, water_ca, water_cr, garbage_ca, garbage_cr, car_ins_ca, car_ins_cr, gas_ca, gas_cr, car_main_ca, car_main_cr, uber_ca, uber_cr, bus_ca, bus_cr, groceries_ca, groceries_cr, restaurant_ca, restaurant_cr, meds_ca, meds_cr, doct_ca, doct_cr, dent_ca, dent_cr, eyes_ca, eyes_cr, med_other_ca, med_other_cr, ent_other_ca, ent_other_cr, clothes_ca, clothes_cr, hair_ca, hair_cr, misc_other_ca, misc_other_cr);
+        successMessage();
+}
+
+    function successMessage() {
+      document.getElementById('formcontainer').style.display = 'none';
+      document.getElementById('success').innerHTML = "<p>Your data has been uploaded.</p>";
+    }
+
+</script>
+
+
+<style>
+body {
+background-color: #eeeeee;
+font-family: sans-serif;
+}
+#formcontainer {
+margin-left: 30px;
+}
+td {
+padding: 1px 5px 1px 5px;
+}
+.heading {
+margin-left: 40px;
+font-weight: bold;
+}
+#submit {
+margin-top: 15px;
+background-color: #3da4e7;
+border-color: #3da4e7;
+color: #fff;
+font-weight: bold;
+width: 100px;
+height: 30px;
+}
+</style>
+  </body>
+</html>
+
