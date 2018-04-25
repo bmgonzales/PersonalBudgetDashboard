@@ -1,2 +1,2 @@
 # PersonalBudgetDashboard
-Uses a Google Form to upload budget data to Google sheet, then sheet is used to populate dashboard
+Google App that uploads budget data to Google sheet by form, then sheet is used to populate dynamic dashboard
